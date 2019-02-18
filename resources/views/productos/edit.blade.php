@@ -23,24 +23,30 @@
                 </ul>
             </div><br />
         @endif
-            <form method="POST" action="{{ route('productos.update', $producto->id)}}">
+            <form 
+                method="POST" 
+                action="{{ route('productos.update', $producto->id )}}">
                 @method('PUT')
                 @csrf
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" nombre="nombre" value={{ $producto->nombre }}/>
+                    <input type="text" class="form-control" name="nombre" value="{{ $producto->nombre }}"/>
                     </div>
                 <div class="form-group">
                     <label for="descripcion">Descripcion</label>
-                    <input type="text" class="form-control" descripcion="descripcion" value={{ $producto->descripcion }}/>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        name="descripcion" 
+                        value="{{ $producto->descripcion }}"/>
                     </div>
                 <div class="form-group">
                     <label for="precio">Precio</label>
-                    <input type="float" class="form-control" precio="precio" value={{ $producto->precio }}/>
+                    <input type="float" class="form-control" name="precio" value="{{ $producto->precio }}"/>
                     </div>
                 <div class="form-group">
                     <label for="descuento">Descuento</label>
-                    <input type="float" class="form-control" descuento="descuento" value={{ $producto->descuento }}/>
+                    <input type="float" class="form-control" name="descuento" value="{{ $producto->descuento }}"/>
                     </div>
                 <button type="submit" class="btn btn-primary">Update</button>
             </form>

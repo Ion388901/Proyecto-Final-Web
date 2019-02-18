@@ -79,12 +79,11 @@ class ProductosController extends BaseController {
 
     public function update(Request $req, $id){
         $req->validate([
-            'nombre'=>'requerido',
-            'descripcion'=>'requerido',
-            'precio'=>'requerido|entero',
-            'descuento'=>'requerido|entero'
+            'nombre'=>'required',
+            'descripcion'=>'required',
+            'precio'=>'required|integer',
+            'descuento'=>'required|integer'
         ]);
-
         Producto::findOrFail($id)->update($req->all());
         return redirect()->route('productos.index')->with('Función realizada', 'Se actualizo la información');
     }

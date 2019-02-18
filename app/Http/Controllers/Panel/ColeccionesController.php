@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Panel;
 
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 
+use App\Models\Coleccion;
 use App\Models\Producto;
 
-class ProductosController extends BaseController {
-    
+class ColeccionesController extends BaseController {
+
     /**
      * Display a listing of the resource.
      *
@@ -16,10 +17,10 @@ class ProductosController extends BaseController {
      */
 
     public function index(Request $req){
-        $productos = Producto::all();
+        $colecciones = Coleccion::all();
         $data = [];
-        $data['productos'] = $productos;      
-        return view('productos.index', $data);
+        $data['colecciones'] = $colecciones;      
+        return view('colecciones.index', $data);
     }
 
     /**
@@ -29,7 +30,7 @@ class ProductosController extends BaseController {
      */
 
     public function create(Request $req){
-        return view('productos.create');
+        return view('colecciones.create');
     }
 
     /**
@@ -40,9 +41,9 @@ class ProductosController extends BaseController {
      */
 
     public function store(Request $req){
-        $productoInput = $req->input('producto');
-        $producto = Producto::create($productoInput);
-        return redirect()->route('productos.index');
+        $coleccionInput = $req->input('coleccion');
+        $coleccion = Coleccion::create($coleccionInput);
+        return redirect()->route('colecciones.index');
     }
 
     /**
@@ -53,8 +54,8 @@ class ProductosController extends BaseController {
      */
 
     public function show($id){
-        $producto=Producto::findOrFail($id);
-        return view('productos.show', compact('producto'));
+        $coleccion=Coleccion::findOrFail($id);
+        return view('colecciones.show', compact('coleccion'));
     }
 
      /**
@@ -65,8 +66,8 @@ class ProductosController extends BaseController {
      */
 
     public function edit($id){
-        $producto = Producto::findOrFail($id);
-        return view('productos.edit', compact('producto'));
+        $coleccion = Coleccion::findOrFail($id);
+        return view('colecciones.edit', compact('coleccion'));
     }
 
     /**
@@ -79,24 +80,23 @@ class ProductosController extends BaseController {
 
     public function update(Request $req, $id){
         $req->validate([
-            'nombre'=>'required',
-            'descripcion'=>'required',
-            'precio'=>'required|integer',
-            'descuento'=>'required|integer'
+            'nombre'=>'requerido',
+            'descripcion'=>'requerido',
         ]);
-        Producto::findOrFail($id)->update($req->all());
-        return redirect()->route('productos.index')->with('Función realizada', 'Se actualizo la información');
+
+        Coleccion::findOrFail($id)->update($req->all());
+        return redirect()->route('colecciones.index')->with('Función realizada', 'Se actualizo la información');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Producto $producto
+     * @param  \App\Coleccion $coleccion
      * @return \Illuminate\Http\Response
      */
 
-    public function destroy(Producto $producto){
-        $producto->delete();
-        return redirect()->route('productos.index')->with('Función realizada', 'Se elimino la información');
+    public function destroy(Coleccion $coleccione){
+        $coleccione->delete();
+        return redirect()->route('colecciones.index')->with('Función realizada', 'Se elimino la información');
     }
 }

@@ -18,8 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 })->name('homepage');
 
-Route::resource('productos', 'ProductosController');
-Route::resource('colecciones', 'ColeccionesController');
 Route::group([
     'as' => 'panel.',
     'namespace' => 'Panel',
@@ -32,6 +30,8 @@ Route::group([
     Route::post('/signin', 'UserController@login')->name('user.login');
     Route::get('/', 'DashboardController@index')->name('dashboard.index');
     Route::group(['middleware' => ['auth']], function() {
+        Route::resource('productos', 'ProductosController');
+        Route::resource('colecciones', 'ColeccionesController');
         Route::get('/protected-1', function() {
             return 'protected-1';
         })->name('protected-1');

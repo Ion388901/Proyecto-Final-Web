@@ -95,8 +95,8 @@ class ColeccionesController extends BaseController {
      * @return \Illuminate\Http\Response
      */
 
-    public function destroy(Coleccion $coleccion){
-        $coleccion->delete();
+    public function destroy(Coleccion $coleccione){
+        $coleccione->delete();
         return redirect()->route('colecciones.index')->with('Función realizada', 'Se elimino la información');
     }
 }

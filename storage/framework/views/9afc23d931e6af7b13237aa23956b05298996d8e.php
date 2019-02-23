@@ -9,7 +9,7 @@
         Show Producto
     </div>
     <div class="pull-right">
-        <a href="<?php echo e(route('productos.index')); ?>" class="btn btn-primary">Regresar</a>
+        <a href="<?php echo e(route('panel.productos.index')); ?>" class="btn btn-primary">Regresar</a>
     </div>
 </div>
 <div class="row">

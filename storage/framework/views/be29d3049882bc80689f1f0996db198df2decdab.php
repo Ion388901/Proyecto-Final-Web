@@ -4,10 +4,10 @@
         <h1>Crear un nuevo producto</h1>
     </div>
     <div class="pull-right">
-        <a href="<?php echo e(route('productos.index')); ?>" class="btn btn-primary">Regresar</a>
+        <a href="<?php echo e(route('panel.productos.index')); ?>" class="btn btn-primary">Regresar</a>
     </div>
 </div>
-<form action="<?php echo e(route('productos.store')); ?>" method="POST">
+<form action="<?php echo e(route('panel.productos.store')); ?>" method="POST">
     <?php echo csrf_field(); ?>
     <div class="row">
         <div class="col">

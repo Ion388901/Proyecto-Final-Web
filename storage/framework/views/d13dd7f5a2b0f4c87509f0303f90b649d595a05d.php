@@ -6,37 +6,23 @@
 </style>
 <div class="card uper">
     <div class="card-header">
-        Show Producto
+        Show Coleccion
     </div>
     <div class="pull-right">
-        <a href="<?php echo e(route('productos.index')); ?>" class="btn btn-primary">Regresar</a>
+        <a href="<?php echo e(route('panel.colecciones.index')); ?>" class="btn btn-primary">Regresar</a>
     </div>
 </div>
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <label>Nombre:</label>
-            <?php echo e($producto->nombre); ?>
+            <?php echo e($coleccion->nombre); ?>
 
         </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <label>Descripcion:</label>
-            <?php echo e($producto->descripcion); ?>
-
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <label>Precio:</label>
-            <?php echo e($producto->precio); ?>
-
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <label>Descripcion:</label>
-            <?php echo e($producto->descuento); ?>
+            <?php echo e($coleccion->descripcion); ?>
 
         </div>
     </div>

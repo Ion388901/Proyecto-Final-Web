@@ -29,7 +29,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <a href="<?php echo e(route('panel.user.logout')); ?>">Cerrar sesión</a>
+                        <a href="<?php echo e(route('npanel.user.logout')); ?>">Cerrar sesión</a>
                     </td>
                 </tr>
             </table>
@@ -40,15 +40,27 @@
         <div class="col-12">
             <ul>
                 <li>
-                    <a href="<?php echo e(route('panel.user.signin')); ?>">Iniciar sesión</a>
+                    <a href="<?php echo e(route('npanel.user.signin')); ?>">Iniciar sesión</a>
                 </li>
                 <li>
-                    <a href="<?php echo e(route('panel.user.register')); ?>">Registrarse</a>
+                    <a href="<?php echo e(route('npanel.user.register')); ?>">Registrarse</a>
                 </li>
             </ul>
         </div>
     </div>
     <?php endif; ?>
+    <div class="row">
+        <div class="col-12">
+            <ul>
+                <li>
+                    <a href="<?php echo e(route('npanel.productos.index')); ?>">Índice de productos</a>
+                </li>
+                <li>
+                    <a href="<?php echo e(route('npanel.colecciones.index')); ?>">Índice de colecciones</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('panel.layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('npanel.layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

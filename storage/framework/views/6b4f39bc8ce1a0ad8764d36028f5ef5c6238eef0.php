@@ -9,7 +9,7 @@
         Edit Coleccion
     </div>
     <div class="pull-right">
-        <a href="<?php echo e(route('colecciones.index')); ?>" class="btn btn-primary">Regresar</a>
+        <a href="<?php echo e(route('panel.colecciones.index')); ?>" class="btn btn-primary">Regresar</a>
     </div>
     <div class="card-body">
         <?php if($errors->any()): ?>
@@ -21,7 +21,7 @@
                 </ul>
             </div><br />
         <?php endif; ?>
-            <form method="POST" action="<?php echo e(route('colecciones.update', $coleccion->id)); ?>">
+            <form method="POST" action="<?php echo e(route('panel.colecciones.update', $coleccion->id)); ?>">
                 <?php echo method_field('PUT'); ?>
                 <?php echo csrf_field(); ?>
                 <div class="form-group">

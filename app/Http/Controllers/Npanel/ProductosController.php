@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Npanel;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 
+use App\Models\Coleccion;
 use App\Models\Producto;
 
 class ProductosController extends BaseController {
@@ -16,6 +17,18 @@ class ProductosController extends BaseController {
      */
 
     public function index(Request $req){
+
+        /**
+         * 
+         * Ordena por ascendencia y descendencia los productos
+         * 
+         */
+
+        $productos = Producto::where('precio', '>', 0)
+            ->orderBy('precio', 'asc')
+            ->orderBy('precio', 'desc')
+            ->get();
+
         $productos = Producto::all();
         $data = [];
         $data['productos'] = $productos;      

@@ -33,6 +33,8 @@ Route::group([
     Route::group(['middleware' => ['auth']], function() {
         Route::resource('productos', 'ProductosController');
         Route::resource('colecciones', 'ColeccionesController');
+        Route::get('/colecciones/{order?}', 'ColeccionesController@index')->name('colecciones.index');
+        Route::get('/productos/{order?}', 'ProductosController@index')->name('productos.index');
     });
 });
 
@@ -52,5 +54,7 @@ Route::group([
         Route::get('/productos/show/{id}', 'ProductosController@show')->name('productos.show');
         Route::get('/colecciones', 'ColeccionesController@index')->name('colecciones.index');
         Route::get('/colecciones/show/{id}', 'ColeccionesController@show')->name('colecciones.show');
+        Route::get('/colecciones/{order?}', 'ColeccionesController@index')->name('colecciones.index');
+        Route::get('/productos/{order?}', 'ProductosController@index')->name('productos.index');
     });
 });

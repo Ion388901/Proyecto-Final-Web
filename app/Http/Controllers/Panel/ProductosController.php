@@ -15,7 +15,15 @@ class ProductosController extends BaseController {
      * @return \Illuminate\Http\Response
      */
 
-    public function index(Request $req){
+    public function index(Request $req, $order = null){
+        $productos = Producto::all();
+        if($order){
+            $productos = Producto::where('precio', '!=', 'null')->orderBy('precio', $order)->get();
+        }
+        else {
+            $productos = Producto::where('precio', '!=', 'null')->get();
+        }
+
         $productos = Producto::all();
         $data = [];
         $data['productos'] = $productos;      

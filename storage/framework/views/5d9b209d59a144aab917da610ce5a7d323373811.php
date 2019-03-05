@@ -7,6 +7,8 @@
 <div class="row">
     <div class="col">
         <a class="btn btn-primary" href="<?php echo e(route('panel.colecciones.create')); ?>" role="button">Agregar una coleccion</a>
+        <a class="btn btn-success btn-sm" href="<?php echo e(route('panel.colecciones.index', ['order' => 'desc'])); ?>">Ordena de forma descendente</a>
+        <a class="btn btn-success btn-sm" href="<?php echo e(route('panel.colecciones.index', ['order' => 'asc'])); ?>">Ordena de forma ascendente</a>
     </div>
 </div>
 <div class="row">

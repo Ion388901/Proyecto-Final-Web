@@ -16,7 +16,14 @@ class ColeccionesController extends BaseController {
      * @return \Illuminate\Http\Response
      */
 
-    public function index(Request $req){
+    public function index(Request $req, $order = null){
+        $colecciones = Coleccion::all();
+        if($order){
+            $colecciones = Coleccion::where('id', '!=', 'null')->orderBy('id', $order)->get();
+        }
+        else {
+            $colecciones = Coleccion::where('id', '!=', 'null')->get();
+        }
         $colecciones = Coleccion::all();
         $data = [];
         $data['colecciones'] = $colecciones;      

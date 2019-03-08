@@ -25,7 +25,6 @@ class ColeccionesController extends BaseController {
             $colecciones = Coleccion::where('id', '!=', 'null')->get();
         }
         
-        $colecciones = Coleccion::all();
         $data = [];
         $data['colecciones'] = $colecciones;      
         return view('panel.colecciones.index', $data);

@@ -16,7 +16,7 @@ class ProductosController extends BaseController {
      */
 
     public function index(Request $req, $order = null){
-        $productos = Producto::all();
+        $productos = [];
         if($order){
             $productos = Producto::where('precio', '!=', 'null')->orderBy('precio', $order)->get();
         }
@@ -24,7 +24,7 @@ class ProductosController extends BaseController {
             $productos = Producto::where('precio', '!=', 'null')->get();
         }
 
-        $productos = Producto::all();
+
         $data = [];
         $data['productos'] = $productos;      
         return view('panel.productos.index', $data);

@@ -13,12 +13,20 @@ class AddProductoAColeccionTable extends Migration
      */
     public function up()
     {
-        Schema::table('colecciones', function (Blueprint $table){
+        Schema::create('coleccion_producto', function (Blueprint $table){
+            $table->increments('id');
             $table->integer('producto_id')
                 ->unsigned();
+            $table->integer('coleccion_id')
+                ->unsigned();
+            $table->timestamps();
             $table->foreign('producto_id')
                 ->references('id')
                 ->on('producto')
+                ->onDelete('cascade');
+            $table->foreign('coleccion_id')
+                ->references('id')
+                ->on('coleccion')
                 ->onDelete('cascade');
         });
     }
@@ -30,9 +38,6 @@ class AddProductoAColeccionTable extends Migration
      */
     public function down()
     {
-        Schema::table('colecciones', function (Blueprint $table){
-            $table->dropForeign(['producto_id']);
-            $table->dropColumn('producto_id');
-        });
+        Schema::dropIfExists('coleccion_producto');
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Panel;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 
+use App\Models\Coleccion;
 use App\Models\Producto;
 
 class ProductosController extends BaseController {
@@ -18,12 +19,11 @@ class ProductosController extends BaseController {
     public function index(Request $req, $order = null){
         $productos = [];
         if($order){
-            $productos = Producto::where('precio', '!=', 'null')->orderBy('precio', $order)->get();
+            $productos = Producto::orderBy('precio', $order)->get();
         }
         else {
-            $productos = Producto::where('precio', '!=', 'null')->get();
+            $productos = Producto::all();
         }
-
 
         $data = [];
         $data['productos'] = $productos;      
@@ -37,6 +37,8 @@ class ProductosController extends BaseController {
      */
 
     public function create(Request $req){
+        $data = [];
+        $data['colecciones'] = Coleccion::all();
         return view('panel.productos.create');
     }
 

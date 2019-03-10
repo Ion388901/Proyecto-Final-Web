@@ -15,33 +15,39 @@
 </div>
 <div class="row">
     <div class="col">
-        <table class="table">
-            <theader>
-                <th>Nombre</th>
-                <th>Descripcion</th>
-            </theader>
-            <tbody>
-                @foreach($colecciones as $coleccion)
-                    <tr>
-                        <td>
-                            {{ $coleccion->nombre }}
-                        </td>
-                        <td>
-                            {{ $coleccion->descripcion }}
-                        </td>
-                        <td>
-                            <form action="{{ route('panel.colecciones.destroy', $coleccion->id) }}" method="POST">
-                            <a href="{{ route('panel.colecciones.show', $coleccion->id) }}" class="btn btn-info">Show</a>
-                            <a href="{{ route('panel.colecciones.edit', $coleccion->id) }}" class="btn btn-primary">Edit</a>
-                            @csrf 
-                            @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+        @if (!data['colecciones']->isEmpty())
+            <table class="table">
+                <theader>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Productos</th>
+                </theader>
+                <tbody>
+                    @foreach($data['colecciones'] as $coleccion)
+                        <tr>
+                            <td>
+                                {{ $coleccion->nombre }}
+                            </td>
+                            <td>
+                                {{ $coleccion->descripcion }}
+                            </td>
+                            <td>
+                                {{ $coleccion->producto->nombre }}
+                            </td>
+                            <td>
+                                <form action="{{ route('panel.colecciones.destroy', $coleccion->id) }}" method="POST">
+                                <a href="{{ route('panel.colecciones.show', $coleccion->id) }}" class="btn btn-info">Show</a>
+                                <a href="{{ route('panel.colecciones.edit', $coleccion->id) }}" class="btn btn-primary">Edit</a>
+                                @csrf 
+                                @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @endif
     </div>
 </div>
 @endsection

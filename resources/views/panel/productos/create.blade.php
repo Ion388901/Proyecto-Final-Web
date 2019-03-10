@@ -45,6 +45,18 @@
     </div>
     <div class="row">
         <div class="col">
+            <div class="form-group">
+                <label>Coleccion</label>
+                <select name="producto[coleccion_id]" class="form-control">
+                @foreach ($data['colecciones'] as $coleccion)
+                    <option value="{{ $coleccion->id }}">{{ $coleccion->nombre }}</option>
+                @endforeach
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
             <button type="submit" class="btn btn-primary">Guardar</button>
         </div>
     </div>

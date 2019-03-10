@@ -15,41 +15,47 @@
 </div>
 <div class="row">
     <div class="col">
-        <table class="table">
-            <theader>
-                <th>Nombre</th>
-                <th>Descripcion</th>
-                <th>Precio</th>
-                <th>Descuento</th>
-            </theader>
-            <tbody>
-                @foreach($productos as $producto)
-                    <tr>
-                        <td>
-                            {{ $producto->nombre }}
-                        </td>
-                        <td>
-                            {{ $producto->descripcion }}
-                        </td>
-                        <td>
-                            {{ $producto->precio }}
-                        </td>
-                        <td>
-                            {{ $producto->descuento }}
-                        </td>
-                        <td>
-                            <form action="{{ route('panel.productos.destroy', $producto->id) }}" method="POST">
-                            <a href="{{ route('panel.productos.show', $producto->id) }}" class="btn btn-info">Show</a>
-                            <a href="{{ route('panel.productos.edit', $producto->id) }}" class="btn btn-primary">Edit</a>
-                            @csrf 
-                            @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+        @if (!data['productos']->isEmpty())
+            <table class="table">
+                <theader>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Precio</th>
+                    <th>Descuento</th>
+                    <th>Colecciones</th>
+                </theader>
+                <tbody>
+                    @foreach($data['productos'] as $producto)
+                        <tr>
+                            <td>
+                                {{ $producto->nombre }}
+                            </td>
+                            <td>
+                                {{ $producto->descripcion }}
+                            </td>
+                            <td>
+                                {{ $producto->precio }}
+                            </td>
+                            <td>
+                                {{ $producto->descuento }}
+                            </td>
+                            <td>
+                                {{ $producto->coleccion->nombre }}
+                            </td>
+                            <td>
+                                <form action="{{ route('panel.productos.destroy', $producto->id) }}" method="POST">
+                                <a href="{{ route('panel.productos.show', $producto->id) }}" class="btn btn-info">Show</a>
+                                <a href="{{ route('panel.productos.edit', $producto->id) }}" class="btn btn-primary">Edit</a>
+                                @csrf 
+                                @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @endif
     </div>
 </div>
 @endsection

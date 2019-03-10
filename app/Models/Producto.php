@@ -12,6 +12,13 @@ class Producto extends Model {
         'nombre',
         'descripcion',
         'precio',
-        'descuento'
+        'descuento',
+        'coleccion_id'
     ];
+
+    public function coleccion()
+    {
+        return $this->belongsToMany('App\Models\Coleccion');
+    }
+
 }

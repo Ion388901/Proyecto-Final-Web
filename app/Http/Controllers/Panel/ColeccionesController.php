@@ -19,12 +19,11 @@ class ColeccionesController extends BaseController {
     public function index(Request $req, $order = null){
         $colecciones = Coleccion::all();
         if($order){
-            $colecciones = Coleccion::where('id', '!=', 'null')->orderBy('id', $order)->get();
+            $colecciones = Coleccion::where('nombre', '!=', 'null')->orderBy('nombre', $order)->get();
         }
         else {
-            $colecciones = Coleccion::where('id', '!=', 'null')->get();
+            $colecciones = Coleccion::where('nombre', '!=', 'null')->get();
         }
-        
         $data = [];
         $data['colecciones'] = $colecciones;      
         return view('panel.colecciones.index', $data);
@@ -37,6 +36,8 @@ class ColeccionesController extends BaseController {
      */
 
     public function create(Request $req){
+        $data = [];
+        $data['productos'] = Producto::all();
         return view('panel.colecciones.create');
     }
 

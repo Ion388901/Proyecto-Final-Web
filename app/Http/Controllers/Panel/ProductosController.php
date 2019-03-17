@@ -9,7 +9,7 @@ use App\Models\Coleccion;
 use App\Models\Producto;
 
 class ProductosController extends BaseController {
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -26,8 +26,8 @@ class ProductosController extends BaseController {
         }
 
         $data = [];
-        $data['productos'] = $productos;      
-        return view('panel.productos.index', $data);
+        $data['productos'] = $productos;
+        return view('panel.productos.index', ['data' => $data]);
     }
 
     /**

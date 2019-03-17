@@ -15,7 +15,7 @@
 </div>
 <div class="row">
     <div class="col">
-        @if (!data['productos']->isEmpty())
+        @if (!$data['productos']->isEmpty())
             <table class="table">
                 <theader>
                     <th>Nombre</th>
@@ -46,7 +46,7 @@
                                 <form action="{{ route('panel.productos.destroy', $producto->id) }}" method="POST">
                                 <a href="{{ route('panel.productos.show', $producto->id) }}" class="btn btn-info">Show</a>
                                 <a href="{{ route('panel.productos.edit', $producto->id) }}" class="btn btn-primary">Edit</a>
-                                @csrf 
+                                @csrf
                                 @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>

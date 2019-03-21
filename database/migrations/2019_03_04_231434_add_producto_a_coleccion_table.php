@@ -13,6 +13,7 @@ class AddProductoAColeccionTable extends Migration
      */
     public function up()
     {
+        
         Schema::create('coleccion_producto', function (Blueprint $table){
             $table->increments('id');
             $table->integer('producto_id')
@@ -22,13 +23,14 @@ class AddProductoAColeccionTable extends Migration
             $table->timestamps();
             $table->foreign('producto_id')
                 ->references('id')
-                ->on('producto')
+                ->on('productos')
                 ->onDelete('cascade');
             $table->foreign('coleccion_id')
                 ->references('id')
-                ->on('coleccion')
+                ->on('colecciones')
                 ->onDelete('cascade');
         });
+        
     }
 
     /**

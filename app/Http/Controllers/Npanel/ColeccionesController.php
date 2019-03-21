@@ -19,12 +19,11 @@ class ColeccionesController extends BaseController {
     public function index(Request $req, $order = null){
         $colecciones = Coleccion::all();
         if($order){
-            $colecciones = Coleccion::where('id', '!=', 'null')->orderBy('id', $order)->get();
+            $colecciones = Coleccion::where('nombre', '!=', 'null')->orderBy('nombre', $order)->get();
         }
         else {
-            $colecciones = Coleccion::where('id', '!=', 'null')->get();
+            $colecciones = Coleccion::where('nombre', '!=', 'null')->get();
         }
-        $colecciones = Coleccion::all();
         $data = [];
         $data['colecciones'] = $colecciones;      
         return view('npanel.colecciones.index', $data);

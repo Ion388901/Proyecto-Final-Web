@@ -11,5 +11,12 @@ class Coleccion extends Model {
     protected $fillable = [
         'nombre',
         'descripcion',
+        'producto_id'
     ];
+
+    public function producto()
+    {
+        return $this->belongsToMany('App\Models\Producto');
+    }
+
 }

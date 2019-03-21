@@ -26,8 +26,8 @@ class ColeccionesController extends BaseController {
         }
         
         $data = [];
-        $data['colecciones'] = $colecciones;      
-        return view('panel.colecciones.index', $data);
+        $data['colecciones'] = $colecciones;
+        return view('panel.colecciones.index', ['data' => $data]);
     }
 
     /**

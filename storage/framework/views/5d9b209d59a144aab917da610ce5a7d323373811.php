@@ -13,6 +13,7 @@
 </div>
 <div class="row">
     <div class="col">
+    <?php if(!$data['colecciones']->isEmpty()): ?>
         <table class="table">
             <theader>
                 <th>Nombre</th>
@@ -42,6 +43,7 @@
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </tbody>
         </table>
+        <?php endif; ?>
     </div>
 </div>
 <?php $__env->stopSection(); ?>

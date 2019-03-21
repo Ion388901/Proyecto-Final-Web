@@ -26,8 +26,8 @@ class ProductosController extends BaseController {
 
 
         $data = [];
-        $data['productos'] = $productos;      
-        return view('panel.productos.index', $data);
+        $data['productos'] = $productos;
+        return view('panel.productos.index', ['data' => $data]);
     }
 
     /**

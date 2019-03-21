@@ -15,6 +15,7 @@
 </div>
 <div class="row">
     <div class="col">
+    @if (!$data['productos']->isEmpty())
         <table class="table">
             <theader>
                 <th>Nombre</th>
@@ -50,6 +51,7 @@
                 @endforeach
             </tbody>
         </table>
+        @endif
     </div>
 </div>
 @endsection

@@ -25,8 +25,8 @@ class ColeccionesController extends BaseController {
             $colecciones = Coleccion::where('nombre', '!=', 'null')->get();
         }
         $data = [];
-        $data['colecciones'] = $colecciones;      
-        return view('panel.colecciones.index', $data);
+        $data['colecciones'] = $colecciones;
+        return view('panel.colecciones.index', ['data' => $data]);
     }
 
     /**
@@ -38,7 +38,7 @@ class ColeccionesController extends BaseController {
     public function create(Request $req){
         $data = [];
         $data['productos'] = Producto::all();
-        return view('panel.colecciones.create');
+        return view('panel.colecciones.create', ['data' => $data]);
     }
 
     /**

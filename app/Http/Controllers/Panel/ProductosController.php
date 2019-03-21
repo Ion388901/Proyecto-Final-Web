@@ -39,7 +39,7 @@ class ProductosController extends BaseController {
     public function create(Request $req){
         $data = [];
         $data['colecciones'] = Coleccion::all();
-        return view('panel.productos.create');
+        return view('panel.productos.create', ['data' => $data]);
     }
 
     /**

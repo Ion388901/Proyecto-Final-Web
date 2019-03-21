@@ -32,7 +32,9 @@
                                 {{ $coleccion->descripcion }}
                             </td>
                             <td>
+                                @if(count($coleccion->producto) > 0)
                                 {{ $coleccion->producto->nombre }}
+                                @endif
                             </td>
                             <td>
                                 <form action="{{ route('panel.colecciones.destroy', $coleccion->id) }}" method="POST">

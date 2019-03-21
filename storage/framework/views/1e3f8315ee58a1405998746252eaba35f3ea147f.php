@@ -13,46 +13,56 @@
 </div>
 <div class="row">
     <div class="col">
-        <table class="table">
-            <theader>
-                <th>Nombre</th>
-                <th>Descripcion</th>
-                <th>Precio</th>
-                <th>Descuento</th>
-            </theader>
-            <tbody>
-                <?php $__currentLoopData = $productos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $producto): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <tr>
-                        <td>
-                            <?php echo e($producto->nombre); ?>
+        <?php if(!$data['productos']->isEmpty()): ?>
+            <table class="table">
+                <theader>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Precio</th>
+                    <th>Descuento</th>
+                    <th>Colecciones</th>
+                </theader>
+                <tbody>
+                    <?php $__currentLoopData = $data['productos']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $producto): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <tr>
+                            <td>
+                                <?php echo e($producto->nombre); ?>
 
-                        </td>
-                        <td>
-                            <?php echo e($producto->descripcion); ?>
+                            </td>
+                            <td>
+                                <?php echo e($producto->descripcion); ?>
 
-                        </td>
-                        <td>
-                            <?php echo e($producto->precio); ?>
+                            </td>
+                            <td>
+                                <?php echo e($producto->precio); ?>
 
-                        </td>
-                        <td>
-                            <?php echo e($producto->descuento); ?>
+                            </td>
+                            <td>
+                                <?php echo e($producto->descuento); ?>
 
-                        </td>
-                        <td>
-                            <form action="<?php echo e(route('panel.productos.destroy', $producto->id)); ?>" method="POST">
-                            <a href="<?php echo e(route('panel.productos.show', $producto->id)); ?>" class="btn btn-info">Show</a>
-                            <a href="<?php echo e(route('panel.productos.edit', $producto->id)); ?>" class="btn btn-primary">Edit</a>
-                            <?php echo csrf_field(); ?> 
-                            <?php echo method_field('DELETE'); ?>
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            </tbody>
-        </table>
+                            </td>
+                            <td>
+                            <?php if(count($producto->coleccion) > 0): ?>
+                                <?php echo e($producto->coleccion->nombre); ?>
+
+                            <?php endif; ?>
+                            </td>
+                            <td>
+                                <form action="<?php echo e(route('panel.productos.destroy', $producto->id)); ?>" method="POST">
+                                <a href="<?php echo e(route('panel.productos.show', $producto->id)); ?>" class="btn btn-info">Show</a>
+                                <a href="<?php echo e(route('panel.productos.edit', $producto->id)); ?>" class="btn btn-primary">Edit</a>
+                                <?php echo csrf_field(); ?>
+                                <?php echo method_field('DELETE'); ?>
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </tbody>
+            </table>
+        <?php endif; ?>
     </div>
 </div>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('panel.layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

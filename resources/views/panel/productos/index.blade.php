@@ -40,7 +40,9 @@
                                 {{ $producto->descuento }}
                             </td>
                             <td>
+                            @if(count($producto->coleccion) > 0)
                                 {{ $producto->coleccion->nombre }}
+                            @endif
                             </td>
                             <td>
                                 <form action="{{ route('panel.productos.destroy', $producto->id) }}" method="POST">

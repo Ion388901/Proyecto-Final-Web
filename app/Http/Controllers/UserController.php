@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Npanel;
+namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
@@ -11,7 +11,7 @@ use App\Models\User;
 class UserController extends BaseController {
 
     public function register(Request $req) {
-        return view('npanel.user.register');
+        return view('user.register');
     }
 
     public function create(Request $req) {
@@ -20,23 +20,23 @@ class UserController extends BaseController {
         $userData['password'] = Hash::make($userInput['password']);
         $user = User::create($userData);
         Auth::login($user);
-        return redirect()->route('npanel.dashboard.index');
+        return redirect()->route('dashboard.index');
     }
 
     public function logout(Request $req) {
         Auth::logout();
-        return redirect()->route('npanel.dashboard.index');
+        return redirect()->route('dashboard.index');
     }
 
     public function signin(Request $req) {
-        return view('npanel.user.signin');
+        return view('user.signin');
     }
     
     public function login(Request $req) {
         $userInput = $req->input('user');
         if (Auth::attempt($userInput)) {
-            return redirect()->route('npanel.dashboard.index');
+            return redirect()->route('dashboard.index');
         }
-        return redirect()->route('npanel.user.signin');
+        return redirect()->route('user.signin');
     }
 }

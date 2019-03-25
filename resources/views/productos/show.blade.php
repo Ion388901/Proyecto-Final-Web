@@ -1,4 +1,4 @@
-@extends('panel.layouts.main')
+@extends('layouts.main')
 
 @section('content')
 <style>

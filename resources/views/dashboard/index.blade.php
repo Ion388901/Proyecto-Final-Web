@@ -1,4 +1,4 @@
-@extends('npanel.layouts.main')
+@extends('layouts.main')
 
 @section('content')
 <div class="container">
@@ -29,7 +29,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <a href="{{ route('npanel.user.logout') }}">Cerrar sesión</a>
+                        <a href="{{ route('user.logout') }}">Cerrar sesión</a>
                     </td>
                 </tr>
             </table>
@@ -40,10 +40,10 @@
         <div class="col-12">
             <ul>
                 <li>
-                    <a href="{{ route('npanel.user.signin') }}">Iniciar sesión</a>
+                    <a href="{{ route('user.signin') }}">Iniciar sesión</a>
                 </li>
                 <li>
-                    <a href="{{ route('npanel.user.register') }}">Registrarse</a>
+                    <a href="{{ route('user.register') }}">Registrarse</a>
                 </li>
             </ul>
         </div>
@@ -53,10 +53,10 @@
         <div class="col-12">
             <ul>
                 <li>
-                    <a href="{{ route('npanel.productos.index') }}">Índice de productos</a>
+                    <a href="{{ route('productos.index') }}">Índice de productos</a>
                 </li>
                 <li>
-                    <a href="{{ route('npanel.colecciones.index') }}">Índice de colecciones</a>
+                    <a href="{{ route('colecciones.index') }}">Índice de colecciones</a>
                 </li>
             </ul>
         </div>

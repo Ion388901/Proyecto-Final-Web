@@ -6,7 +6,8 @@
 </div>
 <div class="row">
     <div class="col">
-        <a class="btn btn-primary" href="<?php echo e(route('productos.create')); ?>" role="button">Agregar un producto</a>
+        <a class="btn btn-success btn-sm" href="<?php echo e(route('productos.index', ['order' => 'desc'])); ?>">Ordena de forma descendente</a>
+        <a class="btn btn-success btn-sm" href="<?php echo e(route('productos.index', ['order' => 'asc'])); ?>">Ordena de forma ascendente</a>
     </div>
 </div>
 <div class="row">
@@ -38,13 +39,7 @@
 
                         </td>
                         <td>
-                            <form action="<?php echo e(route('productos.destroy', $producto->id)); ?>" method="POST">
                             <a href="<?php echo e(route('productos.show', $producto->id)); ?>" class="btn btn-info">Show</a>
-                            <a href="<?php echo e(route('productos.edit', $producto->id)); ?>" class="btn btn-primary">Edit</a>
-                            <?php echo csrf_field(); ?> 
-                            <?php echo method_field('DELETE'); ?>
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
                         </td>
                     </tr>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -53,4 +48,4 @@
     </div>
 </div>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('panel.layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

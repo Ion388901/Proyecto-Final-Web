@@ -19,10 +19,10 @@
             <!-- START Menú de la página -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('npanel.productos.index') }}">
+                    <a class="nav-link" href="{{ route('productos.index') }}">
                         Productos
                     </a>
-                    <a class="nav-link" href="{{ route('npanel.colecciones.index') }}">
+                    <a class="nav-link" href="{{ route('colecciones.index') }}">
                         Colecciones
                     </a>
                 </li>

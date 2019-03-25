@@ -1,4 +1,4 @@
-@extends('panel.layouts.main')
+@extends('layouts.main')
 
 @section('content')
 <div class="row">
@@ -8,7 +8,8 @@
 </div>
 <div class="row">
     <div class="col">
-        <a class="btn btn-primary" href="{{ route('colecciones.create') }}" role="button">Agregar una coleccion</a>
+        <a class="btn btn-success btn-sm" href="{{ route('colecciones.index', ['order' => 'desc']) }}">Ordena de forma descendente</a>
+        <a class="btn btn-success btn-sm" href="{{ route('colecciones.index', ['order' => 'asc']) }}">Ordena de forma ascendente</a>
     </div>
 </div>
 <div class="row">
@@ -28,13 +29,7 @@
                             {{ $coleccion->descripcion }}
                         </td>
                         <td>
-                            <form action="{{ route('colecciones.destroy', $coleccion->id) }}" method="POST">
                             <a href="{{ route('colecciones.show', $coleccion->id) }}" class="btn btn-info">Show</a>
-                            <a href="{{ route('colecciones.edit', $coleccion->id) }}" class="btn btn-primary">Edit</a>
-                            @csrf 
-                            @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
                         </td>
                     </tr>
                 @endforeach

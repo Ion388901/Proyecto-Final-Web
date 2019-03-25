@@ -1,7 +1,7 @@
-@extends('npanel.layouts.unregistered')
+@extends('layouts.unregistered')
 
 @section('content')
-<form class="form-signin" method="POST" action="{{ route('npanel.user.create') }}">
+<form class="form-signin" method="POST" action="{{ route('user.create') }}">
     @csrf
     <h1 class="h3 mb-3 font-weight-normal">Register your account</h1>
     <label for="inputName" class="sr-only">Name</label>
